@@ -1,6 +1,6 @@
 <div align="right">
-  <!-- 语言: -->
-  简体中文 | <a title="English" href="./readme/README_en.md">English</a> | <a title="Japanese" href="./readme/README_ja.md">日本語</a> | <a title="Russian" href="./readme/README_ru.md">Russian</a> | <a title="Korean" href="./readme/README_ko.md">한국어</a>
+  <!-- Language: -->
+  <a title="Chinese" href="./readme/README_zh.md">简体中文</a> | English | <a title="Japanese" href="./readme/README_ja.md">日本語</a> | <a title="Russian" href="./readme/README_ru.md">Russian</a> | <a title="Korean" href="./readme/README_ko.md">한국어</a>
 </div>
 
 <h1 align="center">川虎 Chat 🐯 Chuanhu Chat</h1>
@@ -10,7 +10,7 @@
   </a>
 
 <p align="center">
-    <h3>为ChatGPT等多种LLM提供了一个轻快好用的Web图形界面和众多附加功能</h3>
+    <h3>Lightweight and User-friendly Web-UI for LLMs including ChatGPT/ChatGLM/LLaMA</h3>
     <p align="center">
       <a href="https://github.com/GaiZhenbiao/ChuanhuChatGPT/blob/main/LICENSE">
         <img alt="Tests Passing" src="https://img.shields.io/github/license/GaiZhenbiao/ChuanhuChatGPT" />
@@ -22,113 +22,109 @@
         <img alt="GitHub pull requests" src="https://img.shields.io/badge/Telegram-Group-blue.svg?logo=telegram" />
       </a>
       <p>
-        支持 DeepSeek R1 & GPT 4 · 基于文件问答 · LLM本地部署 · 联网搜索 · Agent 助理 ·  支持 Fine-tune
+        Compatible with GPT-4 · Chat with files · LLMs local deployment · Web search · Chuanhu Agent ·  Fine-tuning
       </p>
-      <a href="https://www.bilibili.com/video/BV1mo4y1r7eE"><strong>视频教程</strong></a>
+      <a href="https://www.youtube.com/watch?v=MtxS4XZWbJE"><strong>Video Tutorial</strong></a>
         ·
-      <a href="https://www.bilibili.com/video/BV1184y1w7aP"><strong>2.0介绍视频</strong></a>
+      <a href="https://www.youtube.com/watch?v=77nw7iimYDE"><strong>2.0 Introduction</strong></a>
+        ·
+      <a href="https://www.youtube.com/watch?v=x-O1jjBqgu4"><strong>3.0 Introduction & Tutorial</strong></a>
 	||
-      <a href="https://huggingface.co/spaces/JohnSmith9982/ChuanhuChatGPT"><strong>在线体验</strong></a>
+      <a href="https://huggingface.co/spaces/JohnSmith9982/ChuanhuChatGPT"><strong>Online trial</strong></a>
       	·
-      <a href="https://huggingface.co/login?next=%2Fspaces%2FJohnSmith9982%2FChuanhuChatGPT%3Fduplicate%3Dtrue"><strong>一键部署</strong></a>
+      <a href="https://huggingface.co/login?next=%2Fspaces%2FJohnSmith9982%2FChuanhuChatGPT%3Fduplicate%3Dtrue"><strong>One-Click deployment</strong></a>
     </p>
   </p>
 </div>
 
 [![Video Title](https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/51039745/0eee1598-c2fd-41c6-bda9-7b059a3ce6e7.jpg)](https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/51039745/0eee1598-c2fd-41c6-bda9-7b059a3ce6e7?autoplay=1)
 
-## 目录
+## ✨ 5.0 Major Update!
 
-| [支持模型](#支持模型) | [使用技巧](#使用技巧) | [安装方式](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用教程) | [常见问题](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/常见问题) | [给作者买可乐🥤](#捐款) | [加入Telegram群组](https://t.me/tkdifferent) |
-| --- | --- | --- | --- | --- | --- |
-
-## ✨ 5.0 重磅更新！
-
-![ChuanhuChat5更新](https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/70903329/f2c2be3a-ea93-4edf-8221-94eddd4a0178)
+![ChuanhuChat5update](https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/70903329/f2c2be3a-ea93-4edf-8221-94eddd4a0178)
 
 
-<sup>New!</sup> 全新的用户界面！精致得不像 Gradio，甚至有毛玻璃效果！
+<sup>New!</sup> An all-new user interface! So exquisite that it doesn't look like Gradio, it even has a frosted glass effect!
 
-<sup>New!</sup> 适配了移动端（包括全面屏手机的挖孔/刘海），层级更加清晰。
+<sup>New!</sup> Adapted for mobile devices (including perforated/bezel-less phones), the hierarchy is clearer.
 
-<sup>New!</sup> 历史记录移到左侧，使用更加方便。并且支持搜索（支持正则）、删除、重命名。
+<sup>New!</sup> The history is moved to the left for easier use. And supports search (with regular expressions), delete, and rename.
 
-<sup>New!</sup> 现在可以让大模型自动命名历史记录（需在设置或配置文件中开启）。
+<sup>New!</sup> Now you can let the large model automatically name the history (Enabled in the settings or configuration file).
 
-<sup>New!</sup> 现在可以将 川虎Chat 作为 PWA 应用程序安装，体验更加原生！支持 Chrome/Edge/Safari 等浏览器。
+<sup>New!</sup> Chuanhu Chat can now be installed as a PWA application for a more native experience! Supported on Chrome/Edge/Safari etc.
 
-<sup>New!</sup> 图标适配各个平台，看起来更舒服。
+<sup>New!</sup> Icons adapted for all platforms, looking more comfortable.
 
-<sup>New!</sup> 支持 Finetune（微调） GPT 3.5！
+<sup>New!</sup> Supports Finetune (fine-tuning) GPT 3.5!
 
+## Supported Models
 
-## 支持模型
-
-| API 调用模型 | 备注 | 本地部署模型 | 备注 |
+| API Callable Models | Remarks | Locally Deployed Models | Remarks |
 | :---: | --- | :---: | --- |
-| [ChatGPT(GPT-4、GPT-4o、o1)](https://chat.openai.com) | 支持微调 gpt-3.5 | [ChatGLM](https://github.com/THUDM/ChatGLM-6B) ([ChatGLM2](https://github.com/THUDM/ChatGLM2-6B)) ([ChatGLM3](https://huggingface.co/THUDM/chatglm3-6b)) ||
-| [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) |  | [LLaMA](https://github.com/facebookresearch/llama) | 支持 Lora 模型 |
-| [Google Gemini Pro](https://ai.google.dev/gemini-api/docs/api-key?hl=zh-cn) |  | [StableLM](https://github.com/Stability-AI/StableLM) ||
-| [讯飞星火认知大模型](https://xinghuo.xfyun.cn) |  | [MOSS](https://github.com/OpenLMLab/MOSS) ||
-| [Inspur Yuan 1.0](https://air.inspur.com/home) |  | [通义千问](https://github.com/QwenLM/Qwen/tree/main) ||
-| [MiniMax](https://api.minimax.chat/) ||[DeepSeek](https://platform.deepseek.com)||
-| [XMChat](https://github.com/MILVLG/xmchat) | 不支持流式传输|||
-| [Midjourney](https://www.midjourney.com/) | 不支持流式传输|||
-| [Claude](https://www.anthropic.com/) | ✨ 现已支持Claude 3 Opus、Sonnet，Haiku将会在推出后的第一时间支持|||
+| [ChatGPT(GPT-4, GPT-4o, o1)](https://chat.openai.com) | Support fine-tune gpt-3.5 | [ChatGLM](https://github.com/THUDM/ChatGLM-6B) ([ChatGLM2](https://github.com/THUDM/ChatGLM2-6B)) ([ChatGLM3](https://huggingface.co/THUDM/chatglm3-6b)) ||
+| [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) |  | [LLaMA](https://github.com/facebookresearch/llama) | Support Lora models|
+| [Google Gemini Pro](https://ai.google.dev/gemini-api/docs/api-key?hl=zh-cn) |  | [StableLM](https://github.com/Stability-AI/StableLM)||
+| [iFlytek Starfire Cognition Large Model](https://xinghuo.xfyun.cn) |  | [MOSS](https://github.com/OpenLMLab/MOSS)||
+| [Inspur Yuan 1.0](https://air.inspur.com/home) |  | [Qwen](https://github.com/QwenLM/Qwen/tree/main)||
+| [MiniMax](https://api.minimax.chat/) ||||
+| [XMChat](https://github.com/MILVLG/xmchat) | Not support streaming|||
+| [Midjourney](https://www.midjourney.com/) | Not support streaming|||
+| [Claude](https://www.anthropic.com/) | ✨ Now supports Claude 3 Opus and Sonnet, Haiku will be supported as soon as it is released|||
 | DALL·E 3 ||||
 
-## 使用技巧
+## Usage Tips
 
-### 💪 强力功能
-- **川虎助理**：类似 AutoGPT，全自动解决你的问题；
-- **在线搜索**：ChatGPT 的数据太旧？给 LLM 插上网络的翅膀；
-- **知识库**：让 ChatGPT 帮你量子速读！根据文件回答问题。
-- **本地部署LLM**：一键部署，获取属于你自己的大语言模型。
-- **GPT 3.5微调**：支持微调 GPT 3.5，让 ChatGPT 更加个性化。
-- **[自定义模型](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-Custom-Models)**：灵活地自定义模型，例如对接本地推理服务。
+### 💪 Powerful Functions
+- **Chuanhu Assistant**: Similar to AutoGPT, automatically solves your problems;
+- **Online Search**: Is ChatGPT's data too old? Give LLM the wings of the internet;
+- **Knowledge Base**: Let ChatGPT help you speed read quantumly! Answer questions based on files.
+- **Local LLM Deployment**: One-click deployment, get your own large language model.
+- **Fine-tuning**: Support fine-tuning GPT-3.5, make your own model!
+- **[Custom Model](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-Custom-Models)**: Flexibly customize models, such as docking with local inference services.
 
 ### 🤖 System Prompt
-- 通过 System Prompt 设定前提条件，可以很有效地进行角色扮演；
-- 川虎Chat 预设了Prompt模板，点击`加载Prompt模板`，先选择 Prompt 模板集合，然后在下方选择想要的 Prompt。
+- The system prompt can effectively enable role-playing by setting prerequisite conditions;
+- ChuanhuChat presets Prompt templates, click `Load Prompt Template`, choose the Prompt template collection first, then choose the Prompt you want in the list below.
 
-### 💬 基础对话
-- 如果回答不满意，可以使用 `重新生成` 按钮再试一次，或者直接 `删除这轮对话`;
-- 输入框支持换行，按 <kbd>Shift</kbd> + <kbd>Enter</kbd>即可；
-- 在输入框按 <kbd>↑</kbd> <kbd>↓</kbd> 方向键，可以在发送记录中快速切换；
-- 每次新建一个对话太麻烦，试试 `单论对话` 功能；
-- 回答气泡旁边的小按钮，不仅能 `一键复制`，还能 `查看Markdown原文`；
-- 指定回答语言，让 ChatGPT 固定以某种语言回答。
+### 💬 Basic Conversation
+- If the answer is not satisfactory, you can try the `Regenerate` button again, or directly `Delete this round of conversation`;
+- Input box supports line breaks, press <kbd>Shift</kbd> + <kbd>Enter</kbd> to make one;
+- Using the <kbd>↑</kbd> <kbd>↓</kbd> arrow keys in the input box, you can quickly switch between send records;
+- Generating a new conversation every time is too cumbersome, try the `single-dialogue` function;
+- The small button next to the answer bubble not only allows `one-click copy`, but also lets you `view the original Markdown text`;
+- Specify the answer language, so that ChatGPT will always reply in a certain language.
 
-### 📜 对话历史
-- 对话历史记录会被自动保存，不用担心问完之后找不到了；
-- 多用户历史记录隔离，除了你都看不到；
-- 重命名历史记录，方便日后查找；
-- <sup>New!</sup> 魔法般自动命名历史记录，让 LLM 理解对话内容，帮你自动为历史记录命名！
-- <sup>New!</sup> 搜索历史记录，支持正则表达式！
+### 📜 Chat History
+- Dialogue history will be automatically saved, you won't have to worry about not being able to find it after asking;
+- Multi-user history isolation, only you can see them;
+- Rename chat, easy to find in the future;
+- <sup>New!</sup> Magically auto-name the chat, let LLM understand the conversation content, and automatically name the chat for you!
+- <sup>New!</sup> Search chat, supports regular expressions!
 
-### 🖼️ 小而美的体验
-- 自研 Small-and-Beautiful 主题，带给你小而美的体验；
-- 自动亮暗色切换，给你从早到晚的舒适体验；
-- 完美渲染 LaTeX / 表格 / 代码块，支持代码高亮；
-- <sup>New!</sup> 非线性动画、毛玻璃效果，精致得不像 Gradio！
-- <sup>New!</sup> 适配 Windows / macOS / Linux / iOS / Android，从图标到全面屏适配，给你最合适的体验！
-- <sup>New!</sup> 支持以 PWA应用程序 安装，体验更加原生！
+### 🖼️ Small and Beautiful Experience
+- Self-developed Small-and-Beautiful theme, gives you a small and beautiful experience;
+- Automatic light and dark color switching, gives you a comfortable experience from morning till night;
+- Perfectly rendering LaTeX / tables / code blocks, supports code highlighting;
+- <sup>New!</sup> Non-linear animations, frosted glass effect, so exquisite it doesn't look like Gradio!
+- <sup>New!</sup> Adapted for Windows / macOS / Linux / iOS / Android, from icon to screen adaptation, gives you the most suitable experience!
+- <sup>New!</sup> Supports PWA app installation for an even more native experience!
 
-### 👨‍💻 极客功能
-- <sup>New!</sup> 支持 Fine-tune（微调）gpt-3.5！
-- 大量 LLM 参数可调；
-- 支持更换 api-host；
-- 支持自定义代理；
-- 支持多 api-key 负载均衡。
+### 👨‍💻 Geek Functions
+- <sup>New!</sup> Supports Fine-tuning gpt-3.5!
+- Plenty of available LLM parameters to adjust;
+- Supports API-host switching;
+- Supports custom proxies;
+- Supports multiple api-key load balancing.
 
-### ⚒️ 部署相关
-- 部署到服务器：在 `config.json` 中设置 `"server_name": "0.0.0.0", "server_port": <你的端口号>,`。
-- 获取公共链接：在 `config.json` 中设置 `"share": true,`。注意程序必须在运行，才能通过公共链接访问。
-- 在Hugging Face上使用：建议在右上角 **复制Space** 再使用，这样App反应可能会快一点。
+### ⚒️ Deployment Related
+- Deployment to the server: Set in `config.json` `"server_name": "0.0.0.0", "server_port": <your port number>,`.
+- Obtain public link: Set in `config.json` `"share": true,`. Note that the program must be running to access it through public links.
+- Use on Hugging Face: It's recommended to **Duplicate the Space** in the top right corner before using, the App response might be faster.
 
-## 快速上手
+## Quick Start
 
-在终端执行以下命令：
+Execute the following commands in the terminal:
 
 ```shell
 git clone https://github.com/GaiZhenbiao/ChuanhuChatGPT.git
@@ -136,45 +132,47 @@ cd ChuanhuChatGPT
 pip install -r requirements.txt
 ```
 
-然后，在项目文件夹中复制一份 `config_example.json`，并将其重命名为 `config.json`，在其中填入 `API-Key` 等设置。
+Then make a copy of `config_example.json`, rename it to `config.json`, and then fill in your API-Key and other settings in the file.
 
 ```shell
 python ChuanhuChatbot.py
 ```
 
-一个浏览器窗口将会自动打开，此时您将可以使用 **川虎Chat** 与ChatGPT或其他模型进行对话。
+A browser window will automatically open, at this point you can use **Chuanhu Chat** to chat with ChatGPT or other models.
 
 > **Note**
 >
-> 具体详尽的安装教程和使用教程请查看[本项目的wiki页面](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用教程)。
+> Please check our [wiki page](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用教程) for detailed instructions.).
 
-## 疑难杂症解决
 
-在遇到各种问题查阅相关信息前，您可以先尝试 **手动拉取本项目的最新更改<sup>1</sup>** 并 **更新依赖库<sup>2</sup>**，然后重试。步骤为：
+## Troubleshooting
 
-1. 点击网页上的 `Download ZIP` 按钮，下载最新代码并解压覆盖，或
+When you encounter problems, you should try to **manually pull the latest changes<sup>1</sup>** and **update dependencies<sup>2</sup>** first, then retry. Steps are:
+
+1. Click on the `Download ZIP` button on the website, download the latest code and unzip to replace, or
    ```shell
    git pull https://github.com/GaiZhenbiao/ChuanhuChatGPT.git main -f
    ```
-2. 尝试再次安装依赖（可能本项目引入了新的依赖）
+2. Try to install dependencies again (the project might have new dependencies)
    ```
    pip install -r requirements.txt
    ```
 
-很多时候，这样就可以解决问题。
+Generally, you can solve most problems by following these steps.
 
-如果问题仍然存在，请查阅该页面：[常见问题](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/常见问题)
+If the problem still exists, please refer to this page: [Frequently Asked Questions (FAQ)](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/常见问题)
 
-该页面列出了**几乎所有**您可能遇到的各种问题，包括如何配置代理，以及遇到问题后您该采取的措施，**请务必认真阅读**。
+This page lists almost all the possible problems and solutions. Please read it carefully.
 
-## 了解更多
+## More Information
 
-若需了解更多信息，请查看我们的 [wiki](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki)：
+More information could be found in our [wiki](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki):
 
-- [想要做出贡献？](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/贡献指南)
-- [项目更新情况？](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/更新日志)
-- [二次开发许可？](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用许可)
-- [如何引用项目？](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用许可#如何引用该项目)
+- [How to contribute a translation](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/Localization)
+- [How to make a contribution](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/贡献指南)
+- [How to cite the project](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用许可#如何引用该项目)
+- [Project changelog](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/更新日志)
+- [Project license](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用许可)
 
 ## Starchart
 
@@ -186,11 +184,9 @@ python ChuanhuChatbot.py
   <img src="https://contrib.rocks/image?repo=GaiZhenbiao/ChuanhuChatGPT" />
 </a>
 
-## 捐款
+## Sponsor
 
-🐯如果觉得这个软件对你有所帮助，欢迎请作者喝可乐、喝咖啡～
-
-联系作者：请去[我的bilibili账号](https://space.bilibili.com/29125536)私信我。
+🐯 If you find this project helpful, feel free to buy me a coke or a cup of coffee~
 
 <a href="https://www.buymeacoffee.com/ChuanhuChat" ><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ChuanhuChat&button_colour=219d53&font_colour=ffffff&font_family=Poppins&outline_colour=ffffff&coffee_colour=FFDD00" alt="Buy Me A Coffee" width="250"></a>
 
