@@ -14,7 +14,7 @@ class I18nAuto:
         language = os.environ.get("LANGUAGE", language)
         language = language.replace("-", "_")
         if language == "auto":
-            language = locale.getdefaultlocale()[0] # get the language code of the system (ex. zh_CN)
+            language = locale.getdefaultlocale()[0] # get the language code of the system (ex. en_US)
         self.language = language
         self.language_map = {}
         self.file_is_exists = os.path.isfile(f"./locale/{language}.json")
@@ -46,7 +46,7 @@ class I18nAuto:
     def __call__(self, key):
         if self.file_is_exists and key in self.language_map:
             return self.language_map[key]
-        elif key in self.fallback_language_map and self.language != "zh_CN":
+        elif key in self.fallback_language_map and self.language != "en_US":
             return self.fallback_language_map[key]
         else:
             return key

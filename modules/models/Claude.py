@@ -101,4 +101,4 @@ class Claude_Client(BaseLLMModel):
         if response is not None:
             return response.content[0].text, response.usage.output_tokens
         else:
-            return i18n("获取资源错误"), 0
+            return i18n("Error retrieving resources."), 0

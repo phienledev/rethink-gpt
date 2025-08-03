@@ -27,16 +27,16 @@ HISTORY_DIR = "history"
 TEMPLATES_DIR = "templates"
 
 # 错误信息
-STANDARD_ERROR_MSG = i18n("☹️发生了错误：")  # 错误信息的标准前缀
-GENERAL_ERROR_MSG = i18n("获取对话时发生错误，请查看后台日志")
-ERROR_RETRIEVE_MSG = i18n("请检查网络连接，或者API-Key是否有效。")
-CONNECTION_TIMEOUT_MSG = i18n("连接超时，无法获取对话。")  # 连接超时
-READ_TIMEOUT_MSG = i18n("读取超时，无法获取对话。")  # 读取超时
-PROXY_ERROR_MSG = i18n("代理错误，无法获取对话。")  # 代理错误
-SSL_ERROR_PROMPT = i18n("SSL错误，无法获取对话。")  # SSL 错误
-NO_APIKEY_MSG = i18n("API key为空，请检查是否输入正确。")  # API key 长度不足 51 位
-NO_INPUT_MSG = i18n("请输入对话内容。")  # 未输入对话内容
-BILLING_NOT_APPLICABLE_MSG = i18n("账单信息不适用") # 本地运行的模型返回的账单信息
+STANDARD_ERROR_MSG = i18n("☹️Error: ")  # 错误信息的标准前缀
+GENERAL_ERROR_MSG = i18n("Error occurred when getting dialogue, check the background log")
+ERROR_RETRIEVE_MSG = i18n("Check the network connection or whether the API-Key is valid.")
+CONNECTION_TIMEOUT_MSG = i18n("Connection timed out, unable to get dialogue.")  # 连接超时
+READ_TIMEOUT_MSG = i18n("Read timed out, unable to get dialogue.")  # 读取超时
+PROXY_ERROR_MSG = i18n("Proxy error, unable to get dialogue.")  # 代理错误
+SSL_ERROR_PROMPT = i18n("SSL error, unable to get dialogue.")  # SSL 错误
+NO_APIKEY_MSG = i18n("API key is empty, check whether it is entered correctly.")  # API key 长度不足 51 位
+NO_INPUT_MSG = i18n("Enter the content of the conversation.")  # 未输入对话内容
+BILLING_NOT_APPLICABLE_MSG = i18n("Billing information is not applicable") # 本地运行的模型返回的账单信息
 
 TIMEOUT_STREAMING = 60  # 流式对话时的超时时间
 TIMEOUT_ALL = 200  # 非流式对话时的超时时间
@@ -47,9 +47,11 @@ CONCURRENT_COUNT = 100 # 允许同时使用的用户数量
 SIM_K = 5
 INDEX_QUERY_TEMPRATURE = 1.0
 
-CHUANHU_TITLE = i18n("川虎Chat 🚀")
+CHUANHU_TITLE = i18n("Chuanhu Chat 🚀")
 
-CHUANHU_DESCRIPTION = i18n("由Bilibili [土川虎虎虎](https://space.bilibili.com/29125536)、[明昭MZhao](https://space.bilibili.com/24807452) 和 [Keldos](https://github.com/Keldos-Li) 开发<br />访问川虎Chat的 [GitHub项目](https://github.com/GaiZhenbiao/ChuanhuChatGPT) 下载最新版脚本")
+CHUANHU_DESCRIPTION = i18n("Developed by Bilibili [土川虎虎虎](https://space.bilibili.com/29125536), [明昭MZhao](https://space.bilibili.com/24807452) and [Keldos](https://github.com/Keldos-Li)\n\nDownload latest code from [GitHub](https://github.com/GaiZhenbiao/ChuanhuChatGPT)")
+
+
 
 
 ONLINE_MODELS = [
@@ -127,7 +129,7 @@ DEFAULT_METADATA = {
     "filelist": None, # file list in the repo to download, now only support .gguf file
     "description": "", # description of the model, displayed in the chatbot header when cursor overing the info icon
     "placeholder": { # placeholder for the model, displayed in the chat area when no message is present
-        "slogan": i18n("gpt_default_slogan"),
+        "slogan": i18n("How can I help you today?"),
     },
     "model_type": None, # model type, used to determine the model's behavior. If not set, the model type is inferred from the model name
     "multimodal": False, # whether the model is multimodal
@@ -170,7 +172,7 @@ MODEL_METADATA = {
         "token_limit": 4096,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT3.5 Turbo Instruct": {
@@ -179,7 +181,7 @@ MODEL_METADATA = {
         "token_limit": 4096,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT3.5 Turbo 16K": {
@@ -188,7 +190,7 @@ MODEL_METADATA = {
         "token_limit": 16384,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT3.5 Turbo 0301": {
@@ -196,7 +198,7 @@ MODEL_METADATA = {
         "token_limit": 4096,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT3.5 Turbo 0613": {
@@ -204,7 +206,7 @@ MODEL_METADATA = {
         "token_limit": 4096,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT3.5 Turbo 1106": {
@@ -212,7 +214,7 @@ MODEL_METADATA = {
     "token_limit": 16384,
     "placeholder": {
             "logo": "file=web_assets/model_logos/openai-green.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT4": {
@@ -221,7 +223,7 @@ MODEL_METADATA = {
         "token_limit": 8192,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT4 32K": {
@@ -230,7 +232,7 @@ MODEL_METADATA = {
         "token_limit": 32768,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT4 Turbo": {
@@ -240,7 +242,7 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT-4o": {
@@ -250,7 +252,7 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "GPT-4o-mini": {
@@ -260,7 +262,7 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "o1-preview": {
@@ -272,7 +274,7 @@ MODEL_METADATA = {
         "stream": False,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "o1-mini": {
@@ -284,7 +286,7 @@ MODEL_METADATA = {
         "stream": False,
         "placeholder": {
             "logo": "file=web_assets/model_logos/openai-black.webp",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "Claude 3 Haiku": {
@@ -295,7 +297,7 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/claude-3.jpg",
-            "slogan": i18n("claude_default_slogan"),
+            "slogan": i18n("What can l help you with?"),
         }
     },
     "Claude 3.5 Sonnet": {
@@ -306,7 +308,7 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/claude-3.jpg",
-            "slogan": i18n("claude_default_slogan"),
+            "slogan": i18n("What can l help you with?"),
         }
     },
     "Claude 3 Opus": {
@@ -317,20 +319,20 @@ MODEL_METADATA = {
         "multimodal": True,
         "placeholder": {
             "logo": "file=web_assets/model_logos/claude-3.jpg",
-            "slogan": i18n("claude_default_slogan"),
+            "slogan": i18n("What can l help you with?"),
         }
     },
     "川虎助理": {
         "model_name": "川虎助理",
-        "description": i18n("chuanhu_description"),
+        "description": i18n("An agent that can use multiple tools to solve complex problems."),
         "placeholder": {
             "logo": "file=web_assets/icon/any-icon-512.png",
             "logo_rounded": "false",
-            "slogan": i18n("chuanhu_slogan"),
-            "question_1": i18n("chuanhu_question_1"),
-            "question_2": i18n("chuanhu_question_2"),
-            "question_3": i18n("chuanhu_question_3"),
-            "question_4": i18n("chuanhu_question_4"),
+            "slogan": i18n("What can Chuanhu do for you today?"),
+            "question_1": i18n("What's the weather in Hangzhou today?"),
+            "question_2": i18n("Any new releases from Apple?"),
+            "question_3": i18n("Current prices of graphics cards?"),
+            "question_4": i18n("Any new trends on TikTok?"),
         }
     },
     "川虎助理 Pro": {
@@ -365,7 +367,7 @@ MODEL_METADATA = {
         "api_host": "generativelanguage.googleapis.com",
         "placeholder": {
             "logo": "file=web_assets/model_logos/gemini.svg",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "Gemini 2.0 Flash-Lite": {
@@ -374,7 +376,7 @@ MODEL_METADATA = {
         "api_host": "generativelanguage.googleapis.com",
         "placeholder": {
             "logo": "file=web_assets/model_logos/gemini.svg",
-            "slogan": i18n("gpt_default_slogan"),
+            "slogan": i18n("How can I help you today?"),
         }
     },
     "Ollama": {
@@ -565,9 +567,9 @@ REPLY_LANGUAGES = [
 ]
 
 HISTORY_NAME_METHODS = [
-    i18n("根据日期时间"),
-    i18n("第一条提问"),
-    i18n("模型自动总结（消耗tokens）"),
+    i18n("By date and time"),
+    i18n("By first question"),
+    i18n("Auto summary by LLM (Consume tokens)"),
 ]
 
 DIRECTLY_SUPPORTED_IMAGE_FORMATS = (".png", ".jpeg", ".gif", ".webp") # image types that can be directly uploaded, other formats will be converted to jpeg

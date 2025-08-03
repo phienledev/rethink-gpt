@@ -107,18 +107,18 @@ class OpenAIVisionClient(BaseLLMModel):
             except Exception as e:
                 # logging.error(f"获取API使用情况失败: " + str(e))
                 if "Invalid authorization header" in str(e):
-                    return i18n("**获取API使用情况失败**，需在填写`config.json`中正确填写sensitive_id")
+                    return i18n("**Failed to get API usage**, correct sensitive_id needed in `config.json`")
                 elif "Incorrect API key provided: sess" in str(e):
-                    return i18n("**获取API使用情况失败**，sensitive_id错误或已过期")
-                return i18n("**获取API使用情况失败**")
+                    return i18n("**Failed to get API usage**, wrong or expired sensitive_id")
+                return i18n("**Failed to get API usage**")
             # rounded_usage = "{:.5f}".format(usage_data["total_usage"] / 100)
             rounded_usage = round(usage_data["total_usage"] / 100, 5)
             usage_percent = round(usage_data["total_usage"] / usage_limit, 2)
             from ..webui import get_html
 
-            # return i18n("**本月使用金额** ") + f"\u3000 ${rounded_usage}"
+            # return i18n("**Monthly usage** ") + f"\u3000 ${rounded_usage}"
             return get_html("billing_info.html").format(
-                    label = i18n("本月使用金额"),
+                    label = i18n("Monthly usage"),
                     usage_percent = usage_percent,
                     rounded_usage = rounded_usage,
                     usage_limit = usage_limit
@@ -134,7 +134,7 @@ class OpenAIVisionClient(BaseLLMModel):
         except Exception as e:
             import traceback
             traceback.print_exc()
-            logging.error(i18n("获取API使用情况失败:") + str(e))
+            logging.error(i18n("Failed to get API usage:") + str(e))
             return STANDARD_ERROR_MSG + ERROR_RETRIEVE_MSG
 
     def _get_gpt4v_style_history(self):
@@ -257,7 +257,7 @@ class OpenAIVisionClient(BaseLLMModel):
                 try:
                     chunk = json.loads(chunk[6:])
                 except:
-                    print(i18n("JSON解析错误,收到的内容: ") + f"{chunk}")
+                    print(i18n("JSON parsing error, received content: ") + f"{chunk}")
                     error_msg += chunk
                     continue
                 try:
@@ -317,7 +317,7 @@ class OpenAIVisionClient(BaseLLMModel):
     def auto_name_chat_history(self, name_chat_method, user_question, single_turn_checkbox):
         if len(self.history) == 2 and not single_turn_checkbox and not hide_history_when_not_logged_in:
             user_question = self.history[0]["content"]
-            if name_chat_method == i18n("模型自动总结（消耗tokens）"):
+            if name_chat_method == i18n("Auto summary by LLM (Consume tokens)"):
                 ai_answer = self.history[1]["content"]
                 try:
                     history = [
@@ -332,7 +332,7 @@ class OpenAIVisionClient(BaseLLMModel):
                     logging.info(f"自动命名失败。{e}")
                     filename = replace_special_symbols(user_question)[:16] + ".json"
                 return self.rename_chat_history(filename)
-            elif name_chat_method == i18n("第一条提问"):
+            elif name_chat_method == i18n("By first question"):
                 filename = replace_special_symbols(user_question)[:16] + ".json"
                 return self.rename_chat_history(filename)
             else:

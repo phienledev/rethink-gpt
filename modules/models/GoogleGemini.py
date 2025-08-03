@@ -250,9 +250,9 @@ class GoogleGeminiClient(BaseLLMModel):
 
             # Handle error cases
             if "promptFeedback" in data:
-                return i18n("由于下面的原因，Google 拒绝返回 Gemini 的回答：\n\n") + str(data["promptFeedback"])
+                return i18n("Google has refused to return Gemini's response due to the following reasons:") + str(data["promptFeedback"])
 
-            return i18n("未能从 Gemini API 获取有效响应")
+            return i18n("Failed to get a valid response from Gemini API")
         except Exception as e:
             logging.error(f"Error processing Gemini API response: {e}")
             return f"Error: {str(e)}"
