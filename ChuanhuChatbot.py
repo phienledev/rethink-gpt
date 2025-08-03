@@ -36,7 +36,6 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
     assert type(my_api_key) == str
     user_api_key = gr.State(my_api_key)
     current_model = gr.State()
-
     topic = gr.State(i18n("Unnamed Dialog History"))
 
     with gr.Row(elem_id="chuanhu-header"):
@@ -66,7 +65,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         with gr.Row(elem_id="chuanhu-history-search-row"):
                             with gr.Column(min_width=150, scale=2):
                                 historySearchTextbox = gr.Textbox(show_label=False, container=False, placeholder=i18n(
-                                    "搜索（支持正则）..."), lines=1, elem_id="history-search-tb")
+                                    "Search (regex supported)..."), lines=1, elem_id="history-search-tb")
                             with gr.Column(min_width=52, scale=1, elem_id="gr-history-header-btns"):
                                 uploadHistoryBtn = gr.UploadButton(
                                     interactive=True, label="", file_types=[".json"], elem_id="gr-history-upload-btn", type="binary")
@@ -76,7 +75,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                     with gr.Row(elem_id="chuanhu-history-body"):
                         with gr.Column(scale=6, elem_id="history-select-wrap"):
                             historySelectList = gr.Radio(
-                                label=i18n("Load dialog from list"),
+                                label=i18n("Load conversation from list"),
                                 choices=get_history_names(),
                                 value=get_first_history_name(),
                                 # multiselect=False,
@@ -91,17 +90,17 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         with gr.Column(scale=6):
                             saveFileName = gr.Textbox(
                                 show_label=True,
-                                placeholder=i18n("Set file name: default is .json, optional is .md"),
+                                placeholder=i18n("Set file name: default .json, optional .md"),
                                 label=i18n("Set save file name"),
-                                value=i18n("Dialog History"),
+                                value=i18n("Conversation history"),
                                 elem_classes="no-container"
                                 # container=False,
                             )
                         with gr.Column(scale=1):
                             renameHistoryBtn = gr.Button(
-                                i18n("💾 Save Dialog"), elem_id="gr-history-save-btn")
+                                i18n("💾 Save conversation"), elem_id="gr-history-save-btn")
                             downloadHistoryJSONBtn = gr.DownloadButton(
-                                i18n("History file (JSON)"), elem_id="gr-history-download-json-btn")
+                                i18n("History (JSON)"), elem_id="gr-history-download-json-btn")
                             downloadHistoryMarkdownBtn = gr.DownloadButton(
                                 i18n("Export as Markdown"), elem_id="gr-history-download-md-btn")
 
@@ -115,15 +114,15 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
             with gr.Column(elem_id="chatbot-area"):
                 with gr.Row(elem_id="chatbot-header"):
                     model_select_dropdown = gr.Dropdown(
-                        label=i18n("Select Model"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True,
+                        label=i18n("Select model"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True,
                         show_label=False, container=False, elem_id="model-select-dropdown", filterable=False
                     )
                     lora_select_dropdown = gr.Dropdown(
-                        label=i18n("Select Model"), choices=[], multiselect=False, interactive=True, visible=False,
+                        label=i18n("Select model"), choices=[], multiselect=False, interactive=True, visible=False,
                         container=False,
                     )
                     gr.HTML(get_html("chatbot_header_btn.html").format(
-                        json_label=i18n("History file (JSON)"),
+                        json_label=i18n("History (JSON)"),
                         md_label=i18n("Export as Markdown")
                     ), elem_id="chatbot-header-btn-bar")
                 with gr.Row():
@@ -142,18 +141,18 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                     with gr.Column(elem_id="chatbot-input-box"):
                         with gr.Row(elem_id="chatbot-input-row"):
                             gr.HTML(get_html("chatbot_more.html").format(
-                                single_turn_label=i18n("Single-turn"),
+                                single_turn_label=i18n("Single-turn conversation"),
                                 websearch_label=i18n("Web search"),
-                                upload_file_label=i18n("Upload files"),
+                                upload_file_label=i18n("Upload file"),
                                 uploaded_files_label=i18n("Knowledge base files"),
-                                uploaded_files_tip=i18n("Manage knowledge base files in the toolbox")
+                                uploaded_files_tip=i18n("Manage knowledge base files in toolbox")
                             ))
                             with gr.Row(elem_id="chatbot-input-tb-row"):
                                 with gr.Column(min_width=225, scale=12):
                                     user_input = gr.Textbox(
                                         elem_id="user-input-tb",
                                         show_label=False,
-                                        placeholder=i18n("Type in here"),
+                                        placeholder=i18n("Type here"),
                                         elem_classes="no-container",
                                         max_lines=5,
                                         # container=False
@@ -167,16 +166,16 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         with gr.Row(elem_id="chatbot-buttons", visible=False):
                             with gr.Column(min_width=120, scale=1):
                                 emptyBtn = gr.Button(
-                                    i18n("🧹 New Dialogue"), elem_id="empty-btn"
+                                    i18n("🧹 New conversation"), elem_id="empty-btn"
                                 )
                             with gr.Column(min_width=120, scale=1):
                                 retryBtn = gr.Button(
-                                    i18n("🔄 Regeneration"), elem_id="gr-retry-btn")
+                                    i18n("🔄 Regenerate"), elem_id="gr-retry-btn")
                             with gr.Column(min_width=120, scale=1):
-                                delFirstBtn = gr.Button(i18n("🗑️ Delete oldest dialog"))
+                                delFirstBtn = gr.Button(i18n("🗑️ Delete oldest conversation"))
                             with gr.Column(min_width=120, scale=1):
                                 delLastBtn = gr.Button(
-                                    i18n("🗑️ Delete latest dialog"), elem_id="gr-dellast-btn")
+                                    i18n("🗑️ Delete latest conversation"), elem_id="gr-dellast-btn")
                             with gr.Row(visible=False) as like_dislike_area:
                                 with gr.Column(min_width=20, scale=1):
                                     likeBtn = gr.Button(
@@ -193,7 +192,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                     gr.HTML(get_html("close_btn.html").format(
                         obj="toolbox"), elem_classes="close-btn")
                 with gr.Tabs(elem_id="chuanhu-toolbox-tabs"):
-                    with gr.Tab(label=i18n("Dialogue")):
+                    with gr.Tab(label=i18n("Conversation")):
                         with gr.Accordion(label=i18n("Model"), open=not HIDE_MY_KEY, visible=not HIDE_MY_KEY):
                             modelDescription = gr.Markdown(
                                 elem_id="gr-model-description",
@@ -211,27 +210,27 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             )
                             if multi_api_key:
                                 usageTxt = gr.Markdown(i18n(
-                                    "多账号模式已开启，无需输入key，可直接开始对话"), elem_id="usage-display", elem_classes="insert-block", visible=show_api_billing)
+                                    "Multi-account mode enabled; start chatting without key"), elem_id="usage-display", elem_classes="insert-block", visible=show_api_billing)
                             else:
                                 usageTxt = gr.Markdown(i18n(
-                                    "**发送消息** 或 **提交key** 以显示额度"), elem_id="usage-display", elem_classes="insert-block", visible=show_api_billing)
+                                    "**Send a message** or **submit a key** to show quota"), elem_id="usage-display", elem_classes="insert-block", visible=show_api_billing)
                         gr.Markdown("---", elem_classes="hr-line", visible=not HIDE_MY_KEY)
                         with gr.Accordion(label="Prompt", open=True):
                             systemPromptTxt = gr.Textbox(
                                 show_label=True,
-                                placeholder=i18n("Type in System Prompt here..."),
+                                placeholder=i18n("Enter system prompt here..."),
                                 label="System prompt",
                                 value=INITIAL_SYSTEM_PROMPT,
                                 lines=8
                             )
                             retain_system_prompt_checkbox = gr.Checkbox(
-                                label=i18n("Retain Prompt For New Chat"), value=False, visible=True, elem_classes="switch-checkbox")
-                            with gr.Accordion(label=i18n("Load Prompt Template"), open=False):
+                                label=i18n("Keep prompt when starting new conversation"), value=False, visible=True, elem_classes="switch-checkbox")
+                            with gr.Accordion(label=i18n("Load prompt template"), open=False):
                                 with gr.Column():
                                     with gr.Row():
                                         with gr.Column(scale=6):
                                             templateFileSelectDropdown = gr.Dropdown(
-                                                label=i18n("Select Prompt Template Collection File"),
+                                                label=i18n("Select prompt template set file"),
                                                 choices=get_template_names(),
                                                 multiselect=False,
                                                 value=get_template_names()[0],
@@ -243,7 +242,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                                     with gr.Row():
                                         with gr.Column():
                                             templateSelectDropdown = gr.Dropdown(
-                                                label=i18n("Load from Prompt Template"),
+                                                label=i18n("Load from prompt templates"),
                                                 choices=load_template(
                                                     get_template_names()[
                                                         0], mode=1
@@ -254,17 +253,17 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         gr.Markdown("---", elem_classes="hr-line")
                         with gr.Accordion(label=i18n("Knowledge base"), open=True, elem_id="gr-kb-accordion"):
                             use_websearch_checkbox = gr.Checkbox(label=i18n(
-                                "使用在线搜索"), value=False, elem_classes="switch-checkbox", elem_id="gr-websearch-cb", visible=False)
+                                "Use online search"), value=False, elem_classes="switch-checkbox", elem_id="gr-websearch-cb", visible=False)
                             index_files = gr.Files(label=i18n(
-                                "上传"), type="filepath", file_types=[".pdf", ".docx", ".pptx", ".epub", ".xlsx", ".txt", "text", "image"], elem_id="upload-index-file")
+                                "Upload"), type="filepath", file_types=[".pdf", ".docx", ".pptx", ".epub", ".xlsx", ".txt", "text", "image"], elem_id="upload-index-file")
                             two_column = gr.Checkbox(label=i18n(
-                                "双栏pdf"), value=advance_docs["pdf"].get("two_column", False))
+                                "Two-column PDF"), value=advance_docs["pdf"].get("two_column", False))
                             summarize_btn = gr.Button(i18n("Summarize"))
-                            # TODO: 公式ocr
-                            # formula_ocr = gr.Checkbox(label=i18n("formula OCR"), value=advance_docs["pdf"].get("formula_ocr", False))
+                            # TODO: formula OCR
+                            # formula_ocr = gr.Checkbox(label=i18n("Recognize formulas"), value=advance_docs["pdf"].get("formula_ocr", False))
 
                     with gr.Tab(label=i18n("Parameters")):
-                        gr.Markdown(i18n("# ⚠️ Caution: Changes require care. ⚠️"),
+                        gr.Markdown(i18n("# ⚠️ Change with caution ⚠️"),
                                     elem_id="advanced-warning")
                         with gr.Accordion(i18n("Parameters"), open=True):
                             temperature_slider = gr.Slider(
@@ -293,7 +292,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             )
                             stop_sequence_txt = gr.Textbox(
                                 show_label=True,
-                                placeholder=i18n("Type in stop token here, separated by comma..."),
+                                placeholder=i18n("Stop sequences, separated by commas..."),
                                 label="stop",
                                 value="",
                                 lines=1,
@@ -339,7 +338,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             )
                             user_identifier_txt = gr.Textbox(
                                 show_label=True,
-                                placeholder=i18n("Used to locate abuse"),
+                                placeholder=i18n("Used to locate abuse behavior"),
                                 label=i18n("User identifier"),
                                 value=user_name.value,
                                 lines=1,
@@ -348,7 +347,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         gr.Markdown(
                             "Will be here soon...\n(We hope)\n\nAnd we hope you can help us to make more extensions!")
 
-                    # changeAPIURLBtn = gr.Button(i18n("🔄 Switch API Address"))
+                    # changeAPIURLBtn = gr.Button(i18n("🔄 Switch API URL"))
 
     with gr.Row(elem_id="popup-wrapper"):
         with gr.Group(elem_id="chuanhu-popup"):
@@ -359,31 +358,30 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         obj="box"), elem_classes="close-btn")
                 with gr.Tabs(elem_id="chuanhu-setting-tabs"):
                     # with gr.Tab(label=i18n("Model")):
-
                         # model_select_dropdown = gr.Dropdown(
-                        #     label=i18n("Select Model"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True
+                        #     label=i18n("Select model"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True
                         # )
                         # lora_select_dropdown = gr.Dropdown(
-                        #     label=i18n("Select LoRA Model"), choices=[], multiselect=False, interactive=True, visible=False
+                        #     label=i18n("Select LoRA model"), choices=[], multiselect=False, interactive=True, visible=False
                         # )
                         # with gr.Row():
 
 
                     with gr.Tab(label=i18n("Advanced")):
                         gr.HTML(get_html("appearance_switcher.html").format(
-                            label=i18n("Switch light/dark theme")), elem_classes="insert-block", visible=False)
+                            label=i18n("Toggle light/dark theme")), elem_classes="insert-block", visible=False)
                         use_streaming_checkbox = gr.Checkbox(
-                            label=i18n("Stream output"), value=True, visible=ENABLE_STREAMING_OPTION, elem_classes="switch-checkbox no-container"
+                            label=i18n("Stream responses"), value=True, visible=ENABLE_STREAMING_OPTION, elem_classes="switch-checkbox no-container"
                         )
                         language_select_dropdown = gr.Dropdown(
-                            label=i18n("Select reply language (for search & index)"),
+                            label=i18n("Select reply language (for search & indexing)"),
                             choices=REPLY_LANGUAGES,
                             multiselect=False,
                             value=REPLY_LANGUAGES[0],
                             elem_classes="no-container",
                         )
                         name_chat_method = gr.Dropdown(
-                            label=i18n("History naming method"),
+                            label=i18n("Conversation naming method"),
                             choices=HISTORY_NAME_METHODS,
                             multiselect=False,
                             interactive=True,
@@ -391,19 +389,19 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             elem_classes="no-container",
                         )
                         single_turn_checkbox = gr.Checkbox(label=i18n(
-                            "单轮对话"), value=False, elem_classes="switch-checkbox", elem_id="gr-single-session-cb", visible=False)
-                        # checkUpdateBtn = gr.Button(i18n("🔄 Check for Update..."), visible=check_update)
+                            "Single-turn conversation"), value=False, elem_classes="switch-checkbox", elem_id="gr-single-session-cb", visible=False)
+                        # checkUpdateBtn = gr.Button(i18n("🔄 Check for updates..."), visible=check_update)
 
                         logout_btn = gr.Button("Logout", link="/logout")
 
                     with gr.Tab(i18n("Network")):
                         gr.Markdown(
-                            i18n("⚠️ To ensure the security of API-Key, please modify the network settings in the configuration file `config.json`."), elem_id="netsetting-warning")
-                        default_btn = gr.Button(i18n("🔙 Reset Network Settings"))
-                        # 网络代理
+                            i18n("⚠️ To keep API key safe, modify network settings in `config.json`"), elem_id="netsetting-warning")
+                        default_btn = gr.Button(i18n("🔙 Restore default network settings"))
+                        # Network proxy
                         proxyTxt = gr.Textbox(
                             show_label=True,
-                            placeholder=i18n("No proxy..."),
+                            placeholder=i18n("No proxy set..."),
                             label=i18n("Proxy address"),
                             value=config.http_proxy,
                             lines=1,
@@ -411,9 +409,8 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             # container=False,
                             elem_classes="view-only-textbox no-container",
                         )
-                        # changeProxyBtn = gr.Button(i18n("🔄 Set Proxy Address"))
-
-                        # 优先展示自定义的api_host
+                        # changeProxyBtn = gr.Button(i18n("🔄 Set proxy address"))
+                        # Show custom api_host first
                         apihostTxt = gr.Textbox(
                             show_label=True,
                             placeholder="api.openai.com",
@@ -440,51 +437,51 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         obj="box"), elem_classes="close-btn")
                 with gr.Tabs(elem_id="chuanhu-training-tabs"):
                     with gr.Tab(label="OpenAI "+i18n("Fine-tuning")):
-                        openai_train_status = gr.Markdown(label=i18n("Training Status"), value=i18n(
-                            "查看[使用介绍](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用教程#微调-gpt-35)"))
+                        openai_train_status = gr.Markdown(label=i18n("Training status"), value=i18n(
+                            "See [usage tutorial](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B#%E5%BE%AE%E8%B0%83-gpt-35)"))
 
-                        with gr.Tab(label=i18n("Prepare Dataset")):
+                        with gr.Tab(label=i18n("Prepare dataset")):
                             dataset_previewjson = gr.JSON(
-                                label=i18n("Dataset Preview"))
-                            dataset_selection = gr.Files(label=i18n("Select Dataset"), file_types=[
+                                label=i18n("Dataset preview"))
+                            dataset_selection = gr.Files(label=i18n("Select dataset"), file_types=[
                                                          ".xlsx", ".jsonl"], file_count="single")
                             upload_to_openai_btn = gr.Button(
                                 i18n("Upload to OpenAI"), variant="primary", interactive=False)
 
                         with gr.Tab(label=i18n("Training")):
                             openai_ft_file_id = gr.Textbox(label=i18n(
-                                "文件ID"), value="", lines=1, placeholder=i18n("Automatically filled after uploading to OpenAI"))
+                                "File ID"), value="", lines=1, placeholder=i18n("Automatically filled after uploading to OpenAI"))
                             openai_ft_suffix = gr.Textbox(label=i18n(
-                                "模型名称后缀"), value="", lines=1, placeholder=i18n("Optional, used to distinguish different models"))
+                                "Model name suffix"), value="", lines=1, placeholder=i18n("Optional, used to distinguish different models"))
                             openai_train_epoch_slider = gr.Slider(label=i18n(
-                                "训练轮数（Epochs）"), minimum=1, maximum=100, value=3, step=1, interactive=True)
+                                "Training epochs"), minimum=1, maximum=100, value=3, step=1, interactive=True)
                             openai_start_train_btn = gr.Button(
-                                i18n("Start Training"), variant="primary", interactive=False)
+                                i18n("Start training"), variant="primary", interactive=False)
 
                         with gr.Tab(label=i18n("Status")):
-                            openai_status_refresh_btn = gr.Button(i18n("Refresh Status"))
+                            openai_status_refresh_btn = gr.Button(i18n("Refresh status"))
                             openai_cancel_all_jobs_btn = gr.Button(
-                                i18n("Cancel All Tasks"))
+                                i18n("Cancel all tasks"))
                             add_to_models_btn = gr.Button(
-                                i18n("Add trained model to the model list"), interactive=False)
+                                i18n("Add trained model to model list"), interactive=False)
 
             with gr.Group(elem_id="web-config", visible=False):
                 gr.HTML(get_html('web_config.html').format(
                     enableCheckUpdate_config=check_update,
                     hideHistoryWhenNotLoggedIn_config=hide_history_when_not_logged_in,
-                    forView_i18n=i18n("For viewing only"),
+                    forView_i18n=i18n("View only"),
                     deleteConfirm_i18n_pref=i18n("Are you sure you want to delete "),
-                    deleteConfirm_i18n_suff=i18n(" ?"),
+                    deleteConfirm_i18n_suff=i18n("?"),
                     usingLatest_i18n=i18n("You are using the latest version!"),
-                    updatingMsg_i18n=i18n("Trying to update..."),
-                    updateSuccess_i18n=i18n("Updated successfully, please restart this program"),
+                    updatingMsg_i18n=i18n("Attempting to update..."),
+                    updateSuccess_i18n=i18n("Update successful, please restart this program"),
                     updateFailure_i18n=i18n(
-                        "更新失败，请尝试[手动更新](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/使用教程#手动更新)"),
+                        "Update failed, please try [manual update](https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B#%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0)"),
                     regenerate_i18n=i18n("Regenerate"),
-                    deleteRound_i18n=i18n("Delete this round of Q&A"),
-                    renameChat_i18n=i18n("Rename this chat"),
-                    validFileName_i18n=i18n("Please enter a valid file name, do not include the following special characters: "),
-                    clearFileHistoryMsg_i18n=i18n("⚠️ Please clear the files in the knowledge base before trying to upload new files!"),
+                    deleteRound_i18n=i18n("Delete this round"),
+                    renameChat_i18n=i18n("Rename this conversation"),
+                    validFileName_i18n=i18n("Please enter a valid file name without the following special characters:"),
+                    clearFileHistoryMsg_i18n=i18n("⚠️ Please delete historical files in the knowledge base before uploading!"),
                     dropUploadMsg_i18n=i18n("Drop files to upload"),
                 ))
             with gr.Group(elem_id="fake-gradio-components", visible=False):
@@ -796,7 +793,8 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
         outputs=[saveFileName, systemPromptTxt, chatbot, single_turn_checkbox, temperature_slider, top_p_slider, n_choices_slider, stop_sequence_txt, max_context_length_slider, max_generation_slider, presence_penalty_slider, frequency_penalty_slider, logit_bias_txt, user_identifier_txt, use_streaming_checkbox, downloadHistoryJSONBtn, downloadHistoryMarkdownBtn],
         js='(a,b)=>{return bgSelectHistory(a,b);}'
     )
-# 默认开启本地服务器，默认可以直接从IP访问，默认不创建公开分享链接
+
+# Start local server by default, accessible via IP, no public share link by default
 demo.title = i18n("Chuanhu Chat 🚀")
 
 if __name__ == "__main__":
@@ -810,5 +808,5 @@ if __name__ == "__main__":
         share=share,
         auth=auth_from_conf if authflag else None,
         favicon_path="./web_assets/favicon.ico",
-        inbrowser=autobrowser and not dockerflag,  # 禁止在docker下开启inbrowser
+        inbrowser=autobrowser and not dockerflag,  # Disable inbrowser when running in Docker
     )
