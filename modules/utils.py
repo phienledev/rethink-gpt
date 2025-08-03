@@ -682,7 +682,7 @@ def get_geoip():
 
     # 如果正在获取IP信息，则返回等待消息
     if FETCHING_IP:
-        return i18n("IP地址信息正在获取中，请稍候...")
+        return i18n("IP address information is being retrieved, please wait...")
 
     # 定义一个内部函数用于在新线程中执行IP信息的获取
     def fetch_ip():
@@ -696,17 +696,17 @@ def get_geoip():
         if "error" in data.keys():
             # logging.warning(f"无法获取IP地址信息。\n{data}")
             if data["reason"] == "RateLimited":
-                SERVER_GEO_IP_MSG = i18n("您的IP区域：未知。")
+                SERVER_GEO_IP_MSG = i18n("Your IP region: Unknown.")
             else:
                 SERVER_GEO_IP_MSG = (
-                    i18n("获取IP地理位置失败。原因：") + f"{data['reason']}" + i18n("。你仍然可以使用聊天功能。")
+                    i18n("Failed to get IP location. Reason: ") + f"{data['reason']}" + i18n(". You can still use the chat function.")
                 )
         else:
             country = data["country_name"]
             if country == "China":
                 SERVER_GEO_IP_MSG = "**您的IP区域：中国。请立即检查代理设置，在不受支持的地区使用API可能导致账号被封禁。**"
             else:
-                SERVER_GEO_IP_MSG = i18n("您的IP区域：") + f"{country}。"
+                SERVER_GEO_IP_MSG = i18n("Your IP region: ") + f"{country}。"
             logging.info(SERVER_GEO_IP_MSG)
         FETCHING_IP = False
 
@@ -718,7 +718,7 @@ def get_geoip():
     thread.start()
 
     # 返回一个默认消息，真正的IP信息将由新线程更新
-    return i18n("正在获取IP地址信息，请稍候...")
+    return i18n("Getting IP address information, please wait...")
 
 
 def find_n(lst, max_num):
@@ -766,7 +766,7 @@ def transfer_input(inputs):
 
 def update_chuanhu(username):
     if username not in admin_list:
-        return gr.Markdown(value=i18n("no_permission_to_update_description"))
+        return gr.Markdown(value=i18n("You do not have permission to update. Please contact the administrator. The administrator's configuration method is to add the username to the admin_list in the configuration file config.json."))
     from .repo import background_update
 
     print("[Updater] Trying to update...")
@@ -774,7 +774,7 @@ def update_chuanhu(username):
     if update_status == "success":
         logging.info("Successfully updated, restart needed")
         status = '<span id="update-status" class="hideK">success</span>'
-        return gr.Markdown(value=i18n("更新成功，请重启本程序") + status)
+        return gr.Markdown(value=i18n("Updated successfully, please restart this program") + status)
     else:
         status = '<span id="update-status" class="hideK">failure</span>'
         return gr.Markdown(
@@ -875,7 +875,7 @@ def new_auto_history_filename(username):
         ) as f:
             if len(f.read()) == 0:
                 return latest_file
-    now = i18n("新对话 ") + datetime.datetime.now().strftime("%m-%d %H-%M")
+    now = i18n("New Chat ") + datetime.datetime.now().strftime("%m-%d %H-%M")
     return f"{now}.json"
 
 
@@ -900,7 +900,7 @@ def beautify_err_msg(err_msg):
             "你没有权限访问 GPT4，[进一步了解](https://github.com/GaiZhenbiao/ChuanhuChatGPT/issues/843)"
         )
     if "Resource not found" in err_msg:
-        return i18n("请查看 config_example.json，配置 Azure OpenAI")
+        return i18n("Please review config_example.json to configure Azure OpenAI")
     try:
         err_msg = json.loads(err_msg)["error"]["message"]
     except:
@@ -978,33 +978,33 @@ class ConfigItem:
 def generate_prompt_string(config_item):
     if config_item.default is not None:
         return (
-            i18n("请输入 ")
+            i18n("Please enter ")
             + colorama.Fore.GREEN
             + i18n(config_item.name)
             + colorama.Style.RESET_ALL
-            + i18n("，默认为 ")
+            + i18n(", default is ")
             + colorama.Fore.GREEN
             + str(config_item.default)
             + colorama.Style.RESET_ALL
-            + i18n("：")
+            + i18n(": ")
         )
     else:
         return (
-            i18n("请输入 ")
+            i18n("Please enter ")
             + colorama.Fore.GREEN
             + i18n(config_item.name)
             + colorama.Style.RESET_ALL
-            + i18n("：")
+            + i18n(": ")
         )
 
 
 def generate_result_string(config_item, config_value):
     return (
-        i18n("你设置了 ")
+        i18n("You set ")
         + colorama.Fore.CYAN
         + i18n(config_item.name)
         + colorama.Style.RESET_ALL
-        + i18n(" 为: ")
+        + i18n(" as: ")
         + config_value
     )
 
@@ -1013,31 +1013,31 @@ class SetupWizard:
     def __init__(self, file_path="config.json") -> None:
         self.config = {}
         self.file_path = file_path
-        language = input('请问是否需要更改语言？可选："auto", "zh_CN", "en_US", "ja_JP", "ko_KR", "sv_SE", "ru_RU", "vi_VN"\nChange the language? Options: "auto", "zh_CN", "en_US", "ja_JP", "ko_KR", "sv_SE", "ru_RU", "vi_VN"\n目前正在使用中文(zh_CN)\nCurrently using Chinese(zh_CN)\n如果需要，请输入你想用的语言的代码：\nIf you need, please enter the code of the language you want to use:')
-        if language.lower() in ["auto", "zh_cn", "en_us", "ja_jp", "ko_kr", "sv_se", "ru_ru", "vi_vn"]:
+        language = input('Change the language? Options: "auto", "en_US", "ja_JP", "ko_KR", "sv_SE", "ru_RU", "vi_VN"\nCurrently using English (en_US)\nIf needed, please enter the code of the language you want to use:')
+        if language.lower() in ["auto", "en_us", "ja_jp", "ko_kr", "sv_se", "ru_ru", "vi_vn"]:
             i18n.change_language(language)
         else:
-            print("你没有输入有效的语言代码，将使用默认语言中文(zh_CN)\nYou did not enter a valid language code, the default language Chinese(zh_CN) will be used.")
+            print("You did not enter a valid language code, the default language English (en_US) will be used.")
         print(
-            i18n("正在进行首次设置，请按照提示进行配置，配置将会被保存在")
+            i18n("First-time setup is in progress, please follow the prompts to configure, and the configuration will be saved in")
             + colorama.Fore.GREEN
             + " config.json "
             + colorama.Style.RESET_ALL
-            + i18n("中。")
+            + i18n("._2")
         )
         print(
-            i18n("在")
+            i18n("in")
             + colorama.Fore.YELLOW
             + " example_config.json "
             + colorama.Style.RESET_ALL
-            + i18n("中，包含了可用设置项及其简要说明。请查看 wiki 获取更多信息：")
+            + i18n(" contains available settings and brief descriptions. Please check the wiki for more information:")
             + colorama.Fore.CYAN
             + "https://github.com/GaiZhenbiao/ChuanhuChatGPT/wiki"
             + colorama.Style.RESET_ALL
         )
         print(
             colorama.Back.GREEN
-            + i18n("现在开始进行交互式配置。碰到不知道该怎么办的设置项时，请直接按回车键跳过，程序会自动选择合适的默认值。")
+            + i18n("Starting interactive configuration now. When you encounter a setting that you don't know what to do, just press the Enter key to skip, and the program will automatically select the appropriate default value.")
             + colorama.Style.RESET_ALL
         )
 
@@ -1047,7 +1047,7 @@ class SetupWizard:
             Bool: Set or aborted
         """
         print(colorama.Fore.YELLOW + i18n(prompt) + colorama.Style.RESET_ALL)
-        choice = input(i18n("输入 Yes(y) 或 No(n)，默认No："))
+        choice = input(i18n("Enter Yes(y) or No(n), default No: "))
         if choice.lower() in ["y", "yes"]:
             for config_item in config_items:
                 if config_item.type == ConfigType.Password:
@@ -1076,7 +1076,7 @@ class SetupWizard:
                     config_value = []
                     while True:
                         config_value_item = input(
-                            generate_prompt_string(config_item) + i18n("，输入空行结束：")
+                            generate_prompt_string(config_item) + i18n(", press Enter to end: ")
                         )
                         if config_value_item == "":
                             break
@@ -1089,11 +1089,11 @@ class SetupWizard:
         elif choice.lower() in ["n", "no"]:
             for config_item in config_items:
                 print(
-                    i18n("你选择了不设置 ")
+                    i18n("You chose not to set ")
                     + colorama.Fore.RED
                     + i18n(config_item.name)
                     + colorama.Style.RESET_ALL
-                    + i18n("。")
+                    + i18n("._1")
                 )
                 if config_item.default is not None:
                     self.config[config_item.key] = config_item.default
@@ -1103,19 +1103,19 @@ class SetupWizard:
 
     def set_users(self):
         # 询问设置用户账户
-        choice = input(colorama.Fore.YELLOW + i18n("是否设置用户账户？设置后，用户需要登陆才可访问。输入 Yes(y) 或 No(n)，默认No：") + colorama.Style.RESET_ALL)
+        choice = input(colorama.Fore.YELLOW + i18n("Set user account? After setting, users need to log in to access. Enter Yes(y) or No(n), default No: ") + colorama.Style.RESET_ALL)
         if choice.lower() in ["y", "yes"]:
             users = []
             while True:
-                username = input(i18n("请先输入用户名，输入空行结束添加用户："))
+                username = input(i18n("Please enter the username first, press Enter to add the user: "))
                 if username == "":
                     break
-                password = getpass.getpass(i18n("请输入密码："))
+                password = getpass.getpass(i18n("Please enter the password: "))
                 users.append([username, password])
             self.config["users"] = users
             return True
         else:
-            print(i18n("你选择了不设置用户账户。"))
+            print(i18n("You chose not to set user account."))
             return False
 
     def __setitem__(self, setting_key: str, value):
@@ -1174,7 +1174,7 @@ def setup_wizard():
             "是否在本地编制知识库索引？如果是，可以在使用本地模型时离线使用知识库，否则使用OpenAI服务来编制索引（需要OpenAI API Key）。请确保你的电脑有至少16GB内存。本地索引模型需要从互联网下载。",
         )
         print(
-            colorama.Back.GREEN + i18n("现在开始设置其他在线模型的API Key") + colorama.Style.RESET_ALL
+            colorama.Back.GREEN + i18n("Start setting the API Key for other online models") + colorama.Style.RESET_ALL
         )
         # Google Palm
         wizard.set(
@@ -1209,7 +1209,7 @@ def setup_wizard():
             [
                 ConfigItem(
                     "midjourney_proxy_api_base",
-                    i18n("你的") + "https://github.com/novicezk/midjourney-proxy" + i18n("代理地址"),
+                    i18n("Your ") + "https://github.com/novicezk/midjourney-proxy" + i18n("Proxy address"),
                     type=ConfigType.String,
                 ),
                 ConfigItem(
@@ -1300,7 +1300,7 @@ def setup_wizard():
             "是否设置 Azure OpenAI？如果设置，软件启动时会自动加载该API Key，无需在 UI 中手动输入。如果不设置，将无法使用 Azure OpenAI 模型。",
         )
         print(
-            colorama.Back.GREEN + i18n("现在开始进行软件功能设置") + colorama.Style.RESET_ALL
+            colorama.Back.GREEN + i18n("Start setting the software function now") + colorama.Style.RESET_ALL
         )
         # 用户列表
         wizard.set_users()
@@ -1493,13 +1493,13 @@ def setup_wizard():
             "是否通过gradio分享？可以通过公网访问。",
         )
         wizard.save()
-        print(colorama.Back.GREEN + i18n("设置完成。现在请重启本程序。") + colorama.Style.RESET_ALL)
+        print(colorama.Back.GREEN + i18n("Setup completed. Please restart this program now.") + colorama.Style.RESET_ALL)
         exit()
 
 
 def reboot_chuanhu():
     import sys
-    print(colorama.Back.GREEN + i18n("正在尝试重启...") + colorama.Style.RESET_ALL)
+    print(colorama.Back.GREEN + i18n("Trying to restart...") + colorama.Style.RESET_ALL)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 

@@ -360,7 +360,7 @@ class BaseLLMModel:
         def get_return_value():
             return chatbot, status_text
 
-        status_text = i18n("开始实时传输回答……")
+        status_text = i18n("Start streaming output...")
         if fake_input:
             chatbot.append((fake_input, ""))
         else:
@@ -428,15 +428,15 @@ class BaseLLMModel:
                     chatbot.extend([(((image.name, None)), None) for image in image_files])
                     self.history.extend([construct_image(image.name) for image in image_files])
                 else:
-                    gr.Warning(i18n("该模型不支持多模态输入"))
+                    gr.Warning(i18n("This model does not accept multi-modal input."))
             if other_files:
                 try:
                     construct_index(self.api_key, file_src=files)
-                    status = i18n("索引构建完成")
+                    status = i18n("Indexing complete.")
                 except Exception as e:
                     import traceback
                     traceback.print_exc()
-                    status = i18n("索引构建失败！") + str(e)
+                    status = i18n("Index build failed!") + str(e)
         if other_files:
             other_files = [f.name for f in other_files]
         else:
@@ -447,8 +447,8 @@ class BaseLLMModel:
         status = gr.Markdown()
         if files:
             index = construct_index(self.api_key, file_src=files)
-            status = i18n("总结完成")
-            logging.info(i18n("生成内容总结中……"))
+            status = i18n("Summary completed.")
+            logging.info(i18n("Generating content summary..."))
             os.environ["OPENAI_API_KEY"] = self.api_key
             from langchain.callbacks import StdOutCallbackHandler
             from langchain.chains.summarize import load_summarize_chain
@@ -473,8 +473,8 @@ class BaseLLMModel:
                 {"input_documents": list(index.docstore.__dict__["_dict"].values())},
                 return_only_outputs=True,
             )["output_text"]
-            print(i18n("总结") + f": {summary}")
-            chatbot.append([i18n("上传了") + str(len(files)) + "个文件", summary])
+            print(i18n("Summarize") + f": {summary}")
+            chatbot.append([i18n("Uploaded") + str(len(files)) + "个文件", summary])
         return chatbot, status
 
     def prepare_inputs(
@@ -856,7 +856,7 @@ class BaseLLMModel:
     def set_key(self, new_access_key):
         if "*" not in new_access_key:
             self.api_key = new_access_key.strip()
-            msg = i18n("API密钥更改为了") + hide_middle_chars(self.api_key)
+            msg = i18n("The API key is changed to") + hide_middle_chars(self.api_key)
             logging.info(msg)
             return self.api_key, msg
         else:
@@ -943,9 +943,9 @@ class BaseLLMModel:
         for i in range(len(token_lst)):
             token_sum += sum(token_lst[: i + 1])
         return (
-            i18n("Token 计数: ")
+            i18n("Token Count: ")
             + f"{sum(token_lst)}"
-            + i18n("，本次对话累计消耗了 ")
+            + i18n(", total cost: ")
             + f"{token_sum} tokens"
         )
 
@@ -1133,7 +1133,7 @@ class BaseLLMModel:
         if filename == "CANCELED":
             return gr.update(), gr.update(), gr.update()
         if filename == "":
-            return i18n("你没有选择任何对话历史"), gr.update(), gr.update()
+            return i18n("You have not selected any conversation history."), gr.update(), gr.update()
         if not filename.endswith(".json"):
             filename += ".json"
         if filename == os.path.basename(filename):
@@ -1151,11 +1151,11 @@ class BaseLLMModel:
         try:
             os.remove(history_file_path)
             os.remove(md_history_file_path)
-            return i18n("删除对话历史成功"), get_history_list(self.user_name), []
+            return i18n("Successfully deleted conversation history."), get_history_list(self.user_name), []
         except:
             logging.info(f"删除对话历史失败 {history_file_path}")
             return (
-                i18n("对话历史") + filename + i18n("已经被删除啦"),
+                i18n("Conversation history") + filename + i18n("It has been deleted."),
                 get_history_list(self.user_name),
                 [],
             )

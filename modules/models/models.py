@@ -24,7 +24,7 @@ def get_model(
     user_name="",
     original_model = None
 ) -> BaseLLMModel:
-    msg = i18n("模型设置为了：") + f" {model_name}"
+    msg = i18n("Model is set to: ") + f" {model_name}"
     model_type = ModelType.get_type(model_name)
     lora_selector_visibility = False
     lora_choices = ["No LoRA"]
@@ -102,7 +102,7 @@ def get_model(
         elif model_type == ModelType.ChuanhuAgent:
             from .ChuanhuAgent import ChuanhuAgent_Client
             model = ChuanhuAgent_Client(model_name, access_key, user_name=user_name)
-            msg = i18n("启用的工具：") + ", ".join([i.name for i in model.tools])
+            msg = i18n("Enabled tools: ") + ", ".join([i.name for i in model.tools])
         elif model_type == ModelType.GooglePaLM:
             from .GooglePaLM import Google_PaLM_Client
             access_key = os.environ.get("GOOGLE_GENAI_API_KEY", access_key)
