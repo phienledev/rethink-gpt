@@ -36,8 +36,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
     assert type(my_api_key) == str
     user_api_key = gr.State(my_api_key)
     current_model = gr.State()
-
-    topic = gr.State(i18n("Untitled conversation history"))
+    topic = gr.State(i18n("Unnamed Dialog History"))
 
     with gr.Row(elem_id="chuanhu-header"):
         gr.HTML(get_html("header_title.html").format(
@@ -143,7 +142,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         with gr.Row(elem_id="chatbot-input-row"):
                             gr.HTML(get_html("chatbot_more.html").format(
                                 single_turn_label=i18n("Single-turn conversation"),
-                                websearch_label=i18n("Online search"),
+                                websearch_label=i18n("Web search"),
                                 upload_file_label=i18n("Upload file"),
                                 uploaded_files_label=i18n("Knowledge base files"),
                                 uploaded_files_tip=i18n("Manage knowledge base files in toolbox")
@@ -359,7 +358,6 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                         obj="box"), elem_classes="close-btn")
                 with gr.Tabs(elem_id="chuanhu-setting-tabs"):
                     # with gr.Tab(label=i18n("Model")):
-
                         # model_select_dropdown = gr.Dropdown(
                         #     label=i18n("Select model"), choices=MODELS, multiselect=False, value=MODELS[DEFAULT_MODEL], interactive=True
                         # )
@@ -412,7 +410,6 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
                             elem_classes="view-only-textbox no-container",
                         )
                         # changeProxyBtn = gr.Button(i18n("🔄 Set proxy address"))
-
                         # Show custom api_host first
                         apihostTxt = gr.Textbox(
                             show_label=True,
@@ -796,6 +793,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
         outputs=[saveFileName, systemPromptTxt, chatbot, single_turn_checkbox, temperature_slider, top_p_slider, n_choices_slider, stop_sequence_txt, max_context_length_slider, max_generation_slider, presence_penalty_slider, frequency_penalty_slider, logit_bias_txt, user_identifier_txt, use_streaming_checkbox, downloadHistoryJSONBtn, downloadHistoryMarkdownBtn],
         js='(a,b)=>{return bgSelectHistory(a,b);}'
     )
+
 # Start local server by default, accessible via IP, no public share link by default
 demo.title = i18n("Chuanhu Chat 🚀")
 

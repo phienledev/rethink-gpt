@@ -100,7 +100,7 @@ def upload_to_openai(file_src):
         traceback.print_exc()
         return "", f"上传失败，原因：{ e }"
 
-def build_event_description(id, status, trained_tokens, name=i18n("暂时未知")):
+def build_event_description(id, status, trained_tokens, name=i18n("Unknown")):
     # convert to markdown
     return f"""
     #### 训练任务 {id}
