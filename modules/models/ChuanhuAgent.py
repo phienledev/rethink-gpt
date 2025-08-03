@@ -154,7 +154,7 @@ class ChuanhuAgent_Client(BaseLLMModel):
             index = construct_index(self.api_key, file_src=files)
             assert index is not None, "获取索引失败"
             self.index = index
-            status = i18n("索引构建完成")
+            status = i18n("Indexing complete.")
             self.index_summary = ", ".join(
                 [os.path.basename(file.name) for file in files]
             )

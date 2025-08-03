@@ -102,8 +102,6 @@ async def main(auto=False):
 
 
     for locale_filename in locale_files:
-        if "zh_CN" in locale_filename:
-            continue
         try:
             locale_strs = get_locale_strings(locale_filename)
         except json.decoder.JSONDecodeError:
